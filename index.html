@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/assets/iconG-4ddf1a06.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harshan Gowda</title>
+  <meta name="description" content="Personal portfolio — projects, Skills, about me, Education and contact." />
+
+  <style>
+    /* ===== COLOR SYSTEM ===== */
+    :root{
+      --bg-grad-1: #111827;
+      --bg-grad-2: #020617;
+      --card: #0f172a;
+      --accent: #22d3ee;
+      --accent-2: #6366f1;
+      --text-main: #e5e7eb;
+      --text-muted: #94a3b8;
+      --border-soft: rgba(255,255,255,0.06);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(34,211,238,0.08), transparent),
+        radial-gradient(600px 300px at 90% 20%, rgba(99,102,241,0.08), transparent),
+        linear-gradient(180deg, var(--bg-grad-1), var(--bg-grad-2));
+      color:var(--text-main);
+      padding:24px;
+      line-height:1.6;
+    }
+
+    .container{max-width:1100px;margin:auto}
+
+    /* ===== HEADER ===== */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .brand{display:flex;gap:12px;align-items:center}
+
+    .logo{
+      width:46px;height:46px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color:#020617;
+    }
+
+    nav{display:flex;gap:18px}
+    nav a{
+      color:var(--text-muted);
+      text-decoration:none;
+      font-weight:600;
+    }
+    nav a:hover{color:var(--accent)}
+
+    /* ===== BUTTONS ===== */
+    .cta{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      border:none;
+      padding:12px 18px;
+      border-radius:12px;
+      color:#020617;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s;
+    }
+    .cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 24px rgba(34,211,238,.35);
+    }
+
+    .btn-outline{
+      background:transparent;
+      border:1px solid var(--border-soft);
+      padding:12px 18px;
+      border-radius:12px;
+      color:var(--text-main);
+      cursor:pointer;
+    }
+
+    /* ===== HERO ===== */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:28px;
+      padding:36px 0;
+    }
+
+    .intro h1{
+      font-size:42px;
+      margin-bottom:8px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .intro p{color:var(--text-muted)}
+
+    /* ===== CARDS ===== */
+    .card, .me-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+      border:1px solid var(--border-soft);
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.45);
+      transition:.3s;
+    }
+    .card:hover{transform:translateY(-4px)}
+
+    .me-card img{
+      width: 50%;
+      border-radius:12px;
+    }
+
+    /* ===== SECTIONS ===== */
+    section{
+      padding:40px 0;
+      border-top:1px solid var(--border-soft);
+    }
+    h2{margin-bottom:20px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    /* ===== SKILLS ===== */
+    #Skills{max-width:600px;margin:auto}
+
+    .skill{margin-bottom:16px}
+    .skill span{font-weight:600}
+
+    .bar{
+      background:rgba(255,255,255,.08);
+      border-radius:999px;
+      overflow:hidden;
+      margin-top:6px;
+    }
+
+    .progress{
+      height:12px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      border-radius:999px;
+      animation:fill 1.5s ease forwards;
+    }
+
+    .Java{width:90%}
+    .HTML{width:85%}
+    .CSS{width:75%}
+    .JavaScript{width:70%}
+    .Python{width:70%}
+
+    @keyframes fill{from{width:0}}
+
+    /* ===== PROJECT TAGS ===== */
+    .chip{
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(34,211,238,.12);
+      color:var(--accent);
+      font-size:13px;
+      font-weight:600;
+    }
+
+    footer{
+      margin-top:40px;
+      padding:30px 0;
+      border-top:1px solid var(--border-soft);
+      text-align:center;
+      color:var(--text-muted);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      nav{display:none}
+    }
+    @media(max-width:560px){
+      .grid{grid-template-columns:1fr}
+    }
+    /* ===== MOBILE NAVBAR ===== */
+.menu-btn{
+  display:none;
+  background:none;
+  border:none;
+  font-size:28px;
+  color:var(--text-main);
+  cursor:pointer;
+}
+
+.desktop-only{display:inline-block}
+
+@media(max-width:900px){
+  .menu-btn{display:block}
+  .desktop-only{display:none}
+
+  nav{
+    position:absolute;
+    top:70px;
+    right:24px;
+    background:rgba(2,6,23,.95);
+    border:1px solid var(--border-soft);
+    border-radius:14px;
+    padding:16px;
+    display:none;
+    flex-direction:column;
+    gap:12px;
+    box-shadow:0 20px 40px rgba(0,0,0,.6);
+  }
+
+  nav.show{
+    display:flex;
+  }
+
+  nav a{
+    padding:8px 12px;
+  }
+}
+/* ===== MOBILE IMAGE FIRST FIX ===== */
+@media (max-width: 900px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .me-card {
+    order: -1; /* image comes first */
+    text-align: center;
+  }
+
+  .me-card img {
+    width: 160px;
+    margin: 0 auto 16px;
+  }
+
+  .intro h1 {
+    text-align: center;
+  }
+
+  .intro p {
+    text-align: center;
+  }
+}
+/* ===== EDUCATION DESIGN ===== */
+.edu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.edu-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+  border:1px solid var(--border-soft);
+  border-radius:18px;
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+
+.edu-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(34,211,238,.08),transparent);
+  opacity:.6;
+}
+
+.edu-title{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:4px;
+}
+
+.edu-sub{
+  color:var(--accent);
+  font-size:14px;
+  font-weight:600;
+}
+
+.edu-year{
+  color:var(--text-muted);
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.edu-desc{
+  font-size:14px;
+  color:var(--text-muted);
+}
+
+.cert-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+  border:1px solid var(--border-soft);
+  border-radius:18px;
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+.cert-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.cert-list li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 0;
+  border-bottom:1px dashed var(--border-soft);
+  font-size:14px;
+}
+
+.cert-list li:last-child{
+  border-bottom:none;
+}
+
+.cert-icon{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .edu-grid{
+    grid-template-columns:1fr;
+  }
+}
+.view-cert-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  font-size:13px;
+  font-weight:600;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#020617;
+  text-decoration:none;
+  transition:0.3s ease;
+}
+
+.view-cert-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(34,211,238,.35);
+}
+/* ===== PROJECT SECTION ===== */
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px;
+}
+
+.project-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+  border:1px solid var(--border-soft);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 12px 30px rgba(0,0,0,.45);
+  transition:0.3s ease;
+  position:relative;
+}
+
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(34,211,238,.25);
+}
+
+.project-title{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.project-desc{
+  font-size:14px;
+  color:var(--text-muted);
+  margin-bottom:14px;
+}
+
+.project-tech{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+
+.project-links{
+  display:flex;
+  gap:10px;
+}
+
+.project-links a{
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.live-btn{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#020617;
+}
+
+.git-btn{
+  border:1px solid var(--border-soft);
+  color:var(--text-main);
+}
+
+.live-btn:hover,
+.git-btn:hover{
+  opacity:.9;
+}
+/* ===== CONTACT SECTION ===== */
+/* ===== CONTACT SECTION ===== */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.contact-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+  border:1px solid var(--border-soft);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 12px 30px rgba(0,0,0,.45);
+  transition:.3s ease;
+}
+
+.contact-card:hover{
+  transform:translateY(-4px);
+}
+
+.contact-card h3{
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+.contact-card p{
+  font-size:14px;
+  color:var(--text-muted);
+  margin-bottom:16px;
+}
+
+.contact-info{
+  display:grid;
+  gap:8px;
+  font-size:14px;
+  margin-bottom:16px;
+}
+
+.contact-socials{
+  display:flex;
+  gap:14px;
+}
+
+.contact-socials img{
+  width:32px;
+  height:32px;
+  transition:.2s;
+}
+
+.contact-socials img:hover{
+  transform:scale(1.1);
+}
+
+/* FORM */
+.contact-form{
+  display:grid;
+  gap:12px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border-soft);
+  background:rgba(255,255,255,.02);
+  color:var(--text-main);
+  font-family:inherit;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+  color:var(--text-muted);
+}
+
+.contact-form button{
+  margin-top:8px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
+.footer{
+  margin-top:60px;
+  padding:28px 16px;
+  border-top:1px solid var(--border-soft);
+  text-align:center;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.03),
+    rgba(255,255,255,.01)
+  );
+}
+
+.footer p{
+  margin:6px 0;
+  font-size:14px;
+  color:var(--text-muted);
+}
+
+.footer strong{
+  color:var(--text-main);
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.footer-sub{
+  font-size:13px;
+  opacity:.85;
+}
+/* image */
+.profile-wrap{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  padding:6px;
+  background:linear-gradient(135deg,#22d3ee,#6366f1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation: float 4s ease-in-out infinite;
+}
+
+.profile-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  background:#020617;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div class="brand">
+    <div class="logo">HG</div>
+    <div>
+      <strong>Harshan Gowda U</strong>
+      <div style="color:var(--text-muted);font-size:13px">Fresher</div>
+    </div>
+  </div>
+
+  <nav id="navMenu">
+    <a href="#about">About</a>
+    <a href="#Skills">Skills</a>
+    <a href="#education - Certifications">Education & Certifications</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+  <button class="cta desktop-only"
+    onclick="location.href='mailto:harshagowda2406@gmail.com'">
+    Hire me
+  </button>
+</header>
+
+<section class="hero">
+  <div class="intro">
+    <h1>Hello — I'm Harshan Gowda U</h1>
+    <p>Computer Science graduate focused on Java, Python and modern web technologies.</p>
+  </div>
+
+  <div class="profile-wrap">
+  <img src="assets/profile.jpg" alt="Profile">
+</div>
+
+    <div class="hero-buttons">
+            <a class="cta" href="#projects">See my work</a>
+           <a href="assets/resume.pdf" download class="cta">Resume </a>
+
+ <!-- Social Links below Resume -->
+  <div style="display:flex;gap:12px;margin-top:20px;">
+    <a href="https://www.linkedin.com/in/harshan-gowda-u-5139b1255/" target="_blank">
+      <img src="assets/linkedin.png" alt="LinkedIn" style="width:30px;height:30px;">
+    </a>
+    <a href="https://github.com/harshaGowda1" target="_blank">
+      <img src="assets/github.png" alt="GitHub" style="width:30px;height:30px;">
+    </a>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>I am Harshan Gowda U, a Computer Science graduate with strong skills in Java, Python, and modern web development. I enjoy building efficient and scalable applications, solving real-world problems, and continuously learning new technologies. Passionate about contributing to innovative projects, I aim to create impactful software solutions that make a difference.</p>
+  </div>
+</section>
+
+<section id="Skills">
+  <h2>Skills</h2>
+
+  <div class="skill"><span>Java</span><div class="bar"><div class="progress Java"></div></div></div>
+  <div class="skill"><span>HTML</span><div class="bar"><div class="progress HTML"></div></div></div>
+  <div class="skill"><span>CSS</span><div class="bar"><div class="progress CSS"></div></div></div>
+  <div class="skill"><span>JavaScript</span><div class="bar"><div class="progress JavaScript"></div></div></div>
+  <div class="skill"><span>Python</span><div class="bar"><div class="progress Python"></div></div></div>
+</section>
+
+<section id="certifications">
+  <h2>Education & Certifications</h2>
+
+  <div class="project-grid">
+
+    <!-- Education Card -->
+    <div class="project-card">
+      <h3 class="project-title">B.Sc Computer Science</h3>
+      <p class="project-desc">
+        Amruta Institute of Engineering & Management Sciences<br>
+        2019 – 2023 | Bengaluru
+      </p>
+
+      <div class="project-tech">
+        <span class="chip">Java</span>
+        <span class="chip">Python</span>
+        <span class="chip">Web Development</span>
+      </div>
+    </div>
+
+    <!-- Certification 1 -->
+    <div class="project-card">
+      <h3 class="project-title">AWS Cloud Practitioner</h3>
+      <p class="project-desc">
+        Udemy Certification – Cloud fundamentals, AWS services, IAM, EC2.
+      </p>
+
+      <div class="project-tech">
+        <span class="chip">AWS</span>
+        <span class="chip">Cloud</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://www.udemy.com/certificate/UC-ed1633be-6dad-4262-9ec0-26b496f91071/"
+           target="_blank"
+           class="live-btn">
+           View Certificate
+        </a>
+      </div>
+    </div>
+
+    <!-- Certification 2 -->
+    <div class="project-card">
+      <h3 class="project-title">JavaScript Course</h3>
+      <p class="project-desc">
+        Advanced JavaScript concepts, DOM, ES6+, real projects.
+      </p>
+
+      <div class="project-tech">
+        <span class="chip">JavaScript</span>
+        <span class="chip">Frontend</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://www.udemy.com/certificate/UC-4b4d2cff-8a9c-465c-955d-5ff152b4a1dc/"
+           target="_blank"
+           class="live-btn">
+           View Certificate
+        </a>
+      </div>
+    </div>
+
+    <!-- Certification 3 -->
+    <div class="project-card">
+      <h3 class="project-title">Python Programming</h3>
+      <p class="project-desc">
+        Core Python, OOP, file handling, automation basics.
+      </p>
+
+      <div class="project-tech">
+        <span class="chip">Python</span>
+        <span class="chip">Programming</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://www.udemy.com/certificate/UC-157ddbf3-313e-4219-a3d4-c3af260d5cb3/"
+           target="_blank"
+           class="live-btn">
+           View Certificate
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="project-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <div class="project-title">Personal Portfolio Website</div>
+      <p class="project-desc">
+        Responsive personal portfolio showcasing skills, education,
+        certifications, and projects with modern UI design.
+      </p>
+
+      <div class="project-tech">
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">JavaScript</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://harshan-gowda.netlify.app/" target="_blank" class="live-btn">
+          Demo
+        </a>
+        <a href="https://github.com/harshaGowda1" target="_blank" class="git-btn">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <div class="project-title">Online Voting System Using Blockchain</div>
+      <p class="project-desc">
+         A secure and transparent online voting platform built using blockchain
+    technology to ensure tamper-proof elections, voter authentication,
+    and real-time result verification
+      </p>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;">
+    <span class="chip">Blockchain</span>
+    <span class="chip">JavaScript</span>
+    <span class="chip">HTML</span>
+    <span class="chip">CSS</span>
+    <span class="chip">Smart Contracts</span>
+    <span class="chip">Security</span>
+  </div>
+
+      <div class="project-links">
+        <a href="#" class="live-btn">Demo</a>
+        <a href="#" class="git-btn">GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-grid">
+
+    <!-- Contact Info Card -->
+    <div class="contact-card">
+      <h3>Let’s Connect</h3>
+      <p>
+        I’m open to internships, full-time roles, and freelance opportunities.
+        Feel free to reach out anytime.
+      </p>
+
+      <div class="contact-info">
+        <div>📧 harshagowda2406@gmail.com</div>
+        <div>📍 Bengaluru, India</div>
+      </div>
+
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/in/harshan-gowda-u-5139b1255/" target="_blank">
+          <img src="assets/linkedin.png" alt="LinkedIn">
+        </a>
+        <a href="https://github.com/harshaGowda1" target="_blank">
+          <img src="assets/github.png" alt="GitHub">
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Form Card -->
+    <div class="contact-card">
+      <h3>Send a Message</h3>
+
+      <form action="mailto:harshagowda2406@gmail.com" method="post" enctype="text/plain" class="contact-form">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+
+        <button type="submit" class="cta">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p>
+   | Copyright © <span id="year"></span> 
+    <strong>Portfolio </strong> | All Rights Reserved |
+  </p>
+
+  <p class="footer-sub">
+    | Made with ❤️ By Harshan Gowda |
+  </p>
+</footer>
+
+
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script>
+function toggleMenu(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+<script>
+document.querySelectorAll("#navMenu a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.getElementById("navMenu").classList.remove("show");
+  });
+});
+</script>
+</body>
+</html>
