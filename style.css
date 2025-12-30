@@ -81,24 +81,21 @@
     }
 
     /* ===== HERO ===== */
-    .hero{
-      display:grid;
-      grid-template-columns:1fr 360px;
-      gap:28px;
-      padding:36px 0;
-    }
+   @media(max-width:768px){
+  .hero{
+    padding:20px 0;
+    gap:16px;
+  }
 
-    .intro h1{
-      font-size:42px;
-      margin-bottom:8px;
-      background: linear-gradient(90deg,var(--accent),var(--accent-2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-    }
+  .hero-buttons{
+    margin-top:12px;
+  }
 
-    .intro p{color:var(--text-muted)}
+  .profile-wrap img{
+    width:150px;
+  }
+}
+
 
     /* ===== CARDS ===== */
     .card, .me-card{
@@ -559,4 +556,8 @@
 @keyframes float{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-10px)}
+}
+.mobile-hire{
+  margin-top:10px;
+  text-align:center;
 }
