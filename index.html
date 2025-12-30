@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="/assets/iconG-4ddf1a06.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Harshan Gowda</title>
   <meta name="description" content="Personal portfolio — projects, Skills, about me, Education and contact." />
 
-<link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="style.css">
+   
 </head>
 
 <body>
@@ -24,18 +23,29 @@
   </div>
 
   <nav id="navMenu">
+    <a href="mailto:harshagowda2406@gmail.com?subject=Hiring%20Inquiry"
+   class="cta mobile-hire">
+  Hire Me
+</a>
+
     <a href="#about">About</a>
     <a href="#Skills">Skills</a>
-    <a href="#education - Certifications">Education & Certifications</a>
+    <a href="#education-certifications">Education & Certifications</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-  <button class="cta desktop-only"
-    onclick="location.href='mailto:harshagowda2406@gmail.com'">
-    Hire me
+  <a href="mailto:harshagowda2406@gmail.com
+?subject=Hiring%20Inquiry
+&body=Hello%20Harshan,%0D%0AI%20would%20like%20to%20discuss%20an%20opportunity."
+class="cta desktop-only">
+Hire Me
+</a>
+
+</a>
+
   </button>
 </header>
 
@@ -82,7 +92,8 @@
   <div class="skill"><span>Python</span><div class="bar"><div class="progress Python"></div></div></div>
 </section>
 
-<section id="certifications">
+<section id="education-certifications">
+
   <h2>Education & Certifications</h2>
 
   <div class="project-grid">
@@ -215,11 +226,6 @@
     <span class="chip">Smart Contracts</span>
     <span class="chip">Security</span>
   </div>
-
-      <div class="project-links">
-        <a href="#" class="live-btn">Demo</a>
-        <a href="#" class="git-btn">GitHub</a>
-      </div>
     </div>
 
   </div>
@@ -301,4 +307,3 @@ document.querySelectorAll("#navMenu a").forEach(link=>{
 </script>
 </body>
 </html>
-
